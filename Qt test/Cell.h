@@ -4,17 +4,14 @@
 
 class Map;
 
-extern MainWindow *window;
+extern MainWindow *main_window;
 
-class Cell {
-
+class Cell : public QPushButton {	Q_OBJECT
+	
 public:
 	static const QSize def_cellSize;
 
-
-	Cell(QPoint mapPos, QSize size, Map* map);
-
-	Cell(QPoint mapPos, Map *map, QSize size = { def_cellSize });
+	Cell(QPoint mapPos, Map *map, QWidget *parent = nullptr, QSize size = { def_cellSize });
 
 	bool hasBomb() const;
 
@@ -22,10 +19,14 @@ public:
 
 	void setBomb();
 
+	void mouseReleaseEvent(QMouseEvent *event) override;
+
 private:
+	bool		_opened;
 	bool		_hasBomb;
 	QPoint		_pos;
 	QPoint		_mapPos;
 	Map			*_map;
-	QPushButton *_button;
+	QLabel		_label{ main_window };
+	// QToolButton	*_button;
 };

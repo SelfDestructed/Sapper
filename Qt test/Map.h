@@ -1,19 +1,32 @@
 #pragma once
 #include "Cell.h"
+#include "Settings.h"
 
 class Map {
 
 public:
-	static const QSize def_mapSize;
-
-	explicit Map(QPoint pos = { 100, 100 }, QSize size = { def_mapSize });
+	explicit Map(Settings &settings, QPoint pos = { Settings::def_mapPos });
 
 	~Map();
 
+	QPoint pos() const;
+
 	std::vector<Cell *> &operator[](int idx);
 
+	void setBombs(int cnt);
+
+	std::vector<std::vector<Cell *>> &raw();
+
+	void succesMove() {
+		if(--_closed == _bombs) {
+			MessageBoxA(nullptr, "Success!", "You won!", MB_OK);
+			main_window->stopClicked();
+		}
+	}
+
 private:
-	QGridLayout			_grid;
-	QPoint				_pos;
+	int								 _closed;
+	int								 _bombs;
+	QPoint							 _pos;
 	std::vector<std::vector<Cell *>> _map;
 };

@@ -23,6 +23,15 @@
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Cell.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Cell.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -59,6 +68,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
